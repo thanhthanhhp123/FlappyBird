@@ -85,7 +85,7 @@ def train():
     writer = SummaryWriter()
     agent = DeepQLearning(env, device = device, k = k)
     agent.load(r"models\flappy_bird_121200_episode.pth")
-    epsilon = 0.01
+    epsilon = 1
     epsilon_decay = 0.999
     epsilon_min = 0.01
     episodes = 1000000
