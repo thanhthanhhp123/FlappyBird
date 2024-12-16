@@ -111,12 +111,11 @@ def train():
 
     writer = SummaryWriter()
     agent = DoubleQLearning(env, device = device, k = k)
-    agent.load(r"models\flappy_bird_121200_episode.pth")
     epsilon = 1
     epsilon_decay = 0.999
     epsilon_min = 0.01
     episodes = 1000000
-    pbar = tqdm.tqdm(range(121200, episodes), desc="Episodes")
+    pbar = tqdm.tqdm(range(0, episodes), desc="Episodes")
     for episode in pbar:
         state, _ = env.reset()
         done = False
@@ -155,4 +154,3 @@ def test():
 
 if __name__ == "__main__":
     train()
-    test()

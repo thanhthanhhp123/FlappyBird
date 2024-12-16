@@ -89,7 +89,7 @@ def train():
     epsilon_decay = 0.999
     epsilon_min = 0.01
     episodes = 1000000
-    pbar = tqdm.tqdm(range(121200, episodes), desc="Episodes")
+    pbar = tqdm.tqdm(range(0, episodes), desc="Episodes")
     for episode in pbar:
         state, _ = env.reset()
         done = False
@@ -105,7 +105,7 @@ def train():
 
         writer.add_scalar("Reward", total_reward, episode)
         epsilon = max(epsilon * epsilon_decay, epsilon_min)
-        if episode % 100 == 0:
+        if episode % 1000 == 0:
             agent.save(f"duel/flappy_bird_{episode}_episode.pth")
         if episode % 10 == 0:
             agent.target_network.load_state_dict(agent.q_network.state_dict())
